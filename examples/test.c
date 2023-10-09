@@ -6,10 +6,10 @@
 #include <errno.h>
 #include <signal.h>
 #include <inttypes.h>
-#include <event2/event.h>
 
 #include "internal.h"
 #include "evhtp/evhtp.h"
+#include "hv2ev.h"
 
 
 #ifndef EVHTP_DISABLE_EVTHR

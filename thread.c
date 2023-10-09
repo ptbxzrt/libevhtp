@@ -11,11 +11,9 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#include <event2/event.h>
-#include <event2/thread.h>
-
 #include "internal.h"
 #include "evhtp/thread.h"
+#include "hv2ev.h"
 
 typedef struct evthr_cmd        evthr_cmd_t;
 typedef struct evthr_pool_slist evthr_pool_slist_t;

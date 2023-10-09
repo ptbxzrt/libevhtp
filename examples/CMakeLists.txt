@@ -1,6 +1,6 @@
 add_custom_target(examples)
 
-add_executable(test_extensive EXCLUDE_FROM_ALL test.c)
+# add_executable(test_extensive EXCLUDE_FROM_ALL test.c)
 add_executable(test_basic EXCLUDE_FROM_ALL test_basic.c)
 add_executable(test_vhost EXCLUDE_FROM_ALL test_vhost.c)
 add_executable(test_client EXCLUDE_FROM_ALL test_client.c)
@@ -13,16 +13,16 @@ add_executable(example_request_fini EXCLUDE_FROM_ALL example_request_fini.c)
 add_executable(example_basic EXCLUDE_FROM_ALL example_basic.c)
 
 if(NOT EVHTP_DISABLE_EVTHR)
-    #add_executable(example_locality EXCLUDE_FROM_ALL example_locality.c)
-    #target_link_libraries(example_locality evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+    add_executable(example_locality EXCLUDE_FROM_ALL example_locality.c)
+    target_link_libraries(example_locality evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
    
-	add_executable(test_proxy EXCLUDE_FROM_ALL test_proxy.c)
-	target_link_libraries(test_proxy evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+	# add_executable(test_proxy EXCLUDE_FROM_ALL test_proxy.c)
+	# target_link_libraries(test_proxy evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
 
-	add_dependencies(examples test_proxy)
+	# add_dependencies(examples test_proxy)
 endif()
 
-target_link_libraries(test_extensive evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
+# target_link_libraries(test_extensive evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
 target_link_libraries(test_basic   evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
 target_link_libraries(test_vhost   evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
 target_link_libraries(test_client  evhtp ${LIBEVHTP_EXTERNAL_LIBS} ${SYS_LIBS})
@@ -56,7 +56,9 @@ endif()
 add_dependencies(examples
   example_request_fini
   example_chunked example_pause
-  example_vhost test_extensive
+# test_extensive
+  example_locality
+  example_vhost
   test_basic
   test_vhost test_client
   test_query test_perf example_basic)

@@ -21,6 +21,8 @@ struct paused_request_ {
     evhtp_request_t * _request;
 };
 
+hloop_t *loop = NULL;
+
 /* once 10 seconds has passed, this function is called, it will
  * resume the request, and send the final response back to the
  * client.
@@ -47,6 +49,8 @@ http_resume__callback_(int sock, short events, void * arg) {
 
     /* finally send the response to the client, YAY! */
     evhtp_send_reply(req, EVHTP_RES_OK);
+
+    printf("计时器数量: %d\n", hloop_ntimers(loop));
 }
 
 /* this is our default callback, it is the one who sets up the evtimer
@@ -92,6 +96,7 @@ main(int argc, char ** argv) {
     struct timeval      timeo = { 10, 0 };
 
     evbase = event_base_new();
+    loop = evbase->loop;
     evhtp_alloc_assert(evbase);
 
     htp    = evhtp_new(evbase, NULL);

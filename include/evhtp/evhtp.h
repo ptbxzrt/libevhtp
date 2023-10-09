@@ -19,13 +19,9 @@
 #endif
 
 #include <sys/queue.h>
-#include <event2/event.h>
-#include <event2/listener.h>
-#include <event2/buffer.h>
-#include <event2/bufferevent.h>
+#include "hv2ev.h"
 
 #ifndef EVHTP_DISABLE_SSL
-#include <event2/bufferevent_ssl.h>
 #include <openssl/dh.h>
 #include <openssl/ssl.h>
 #include <openssl/err.h>

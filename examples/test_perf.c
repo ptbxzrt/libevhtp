@@ -17,7 +17,7 @@ static int      backlog      = 1024;
 static int      nodelay      = 0;
 static int      defer_accept = 0;
 static int      reuse_port   = 0;
-static size_t   payload_sz   = 100;
+static size_t   payload_sz   = 666;
 
 static void
 response_cb(evhtp_request_t * r, void * a)
@@ -37,46 +37,46 @@ main(int argc, char ** argv)
     extern int    optopt;
     int           c;
 
-    while ((c = getopt(argc, argv, "t:a:p:b:ndrs:")) != -1)
-    {
-        switch (c) {
-            case 't':
-                num_threads  = atoi(optarg);
-                break;
-            case 'a':
-                baddr        = strdup(optarg);
-                break;
-            case 'p':
-                bport        = atoi(optarg);
-                break;
-            case 'b':
-                backlog      = atoll(optarg);
-                break;
-            case 'n':
-                nodelay      = 1;
-                break;
-            case 'd':
-                defer_accept = 1;
-                break;
-            case 'r':
-                reuse_port   = 1;
-                break;
-            case 's':
-                payload_sz   = atoll(optarg);
-                break;
-            default:
-                fprintf(stdout, "Usage: %s [flags]\n", argv[0]);
-                fprintf(stdout, "  -t <n> : number of worker threads [Default: %d]\n", num_threads);
-                fprintf(stdout, "  -a <s> : bind address             [Default: %s]\n", baddr);
-                fprintf(stdout, "  -p <n> : bind port                [Default: %d]\n", bport);
-                fprintf(stdout, "  -b <b> : listen backlog           [Default: %d]\n", backlog);
-                fprintf(stdout, "  -s <n> : size of the response     [Default: %zu]\n", payload_sz);
-                fprintf(stdout, "  -n     : disable nagle (nodelay)  [Default: %s]\n", nodelay ? "true" : "false");
-                fprintf(stdout, "  -d     : enable deferred accept   [Default: %s]\n", defer_accept ? "true" : "false");
-                fprintf(stdout, "  -r     : enable linux reuseport   [Default: %s]\n", reuse_port ? "true" : "false");
-                exit(EXIT_FAILURE);
-        } /* switch */
-    }
+    // while ((c = getopt(argc, argv, "t:a:p:b:ndrs:")) != -1)
+    // {
+    //     switch (c) {
+    //         case 't':
+    //             num_threads  = atoi(optarg);
+    //             break;
+    //         case 'a':
+    //             baddr        = strdup(optarg);
+    //             break;
+    //         case 'p':
+    //             bport        = atoi(optarg);
+    //             break;
+    //         case 'b':
+    //             backlog      = atoll(optarg);
+    //             break;
+    //         case 'n':
+    //             nodelay      = 1;
+    //             break;
+    //         case 'd':
+    //             defer_accept = 1;
+    //             break;
+    //         case 'r':
+    //             reuse_port   = 1;
+    //             break;
+    //         case 's':
+    //             payload_sz   = atoll(optarg);
+    //             break;
+    //         default:
+    //             fprintf(stdout, "Usage: %s [flags]\n", argv[0]);
+    //             fprintf(stdout, "  -t <n> : number of worker threads [Default: %d]\n", num_threads);
+    //             fprintf(stdout, "  -a <s> : bind address             [Default: %s]\n", baddr);
+    //             fprintf(stdout, "  -p <n> : bind port                [Default: %d]\n", bport);
+    //             fprintf(stdout, "  -b <b> : listen backlog           [Default: %d]\n", backlog);
+    //             fprintf(stdout, "  -s <n> : size of the response     [Default: %zu]\n", payload_sz);
+    //             fprintf(stdout, "  -n     : disable nagle (nodelay)  [Default: %s]\n", nodelay ? "true" : "false");
+    //             fprintf(stdout, "  -d     : enable deferred accept   [Default: %s]\n", defer_accept ? "true" : "false");
+    //             fprintf(stdout, "  -r     : enable linux reuseport   [Default: %s]\n", reuse_port ? "true" : "false");
+    //             exit(EXIT_FAILURE);
+    //     } /* switch */
+    // }
 
     {
         struct event_base * evbase;

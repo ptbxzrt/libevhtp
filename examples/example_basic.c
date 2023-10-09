@@ -14,10 +14,12 @@
 static void
 process_request_(evhtp_request_t * req, void * arg)
 {
+    printf("进入process_request_\n");
     (void)arg;
 
     evhtp_log_request_f(arg, req, stderr);
     evhtp_send_reply(req, EVHTP_RES_OK);
+    printf("退出process_request_\n");
 }
 
 int

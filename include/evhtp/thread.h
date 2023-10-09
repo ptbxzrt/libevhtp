@@ -6,7 +6,6 @@
 #define __EVTHR_H__
 
 #include <pthread.h>
-#include <event2/event.h>
 #include <evhtp/config.h>
 
 #ifdef __cplusplus

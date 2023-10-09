@@ -52,12 +52,23 @@ set(LIBEVHTP_SOURCE_FILES
     evhtp.c
     numtoa.c
     parser.c
-    log.c)
+    log.c
+    hv2ev.c)
 
-find_package(LibEvent REQUIRED)
-list(APPEND LIBEVHTP_EXTERNAL_LIBS ${LIBEVENT_LIBRARIES})
-list(APPEND LIBEVHTP_EXTERNAL_INCLUDES ${LIBEVENT_INCLUDE_DIRS})
-list(APPEND package_deps LibEvent)
+# find_package(LibEvent REQUIRED)
+# list(APPEND LIBEVHTP_EXTERNAL_LIBS ${LIBEVENT_LIBRARIES})
+# list(APPEND LIBEVHTP_EXTERNAL_INCLUDES ${LIBEVENT_INCLUDE_DIRS})
+# list(APPEND package_deps LibEvent)
+
+find_package(libhv)
+if(libhv_FOUND)
+    message(STATUS "${Red}FOUNT LIBHV${ColourReset}")
+    list(APPEND LIBEVHTP_EXTERNAL_LIBS /usr/local/lib/libhv.so)
+    list(APPEND LIBEVHTP_EXTERNAL_INCLUDES /usr/local/include/hv)
+endif()
+
+message(STATUS "${Red}zhaohao${ColourReset}: ${LIBEVHTP_EXTERNAL_LIBS}")
+message(STATUS "${Red}zhaohao${ColourReset}: ${LIBEVHTP_EXTERNAL_INCLUDES}")
 
 set(evhtp_dir_headers
   "include/evhtp/evhtp.h"
